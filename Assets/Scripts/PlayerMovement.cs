@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -28,4 +29,13 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = movement * speed;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            GameManager.StartFight();
+        }
+    }
+
 }

@@ -9,21 +9,20 @@ public class MiniGamePlayer : MonoBehaviour
     private Rigidbody2D _rb;
     private Vector2 _moveInput;
 
-    void Start()
+    private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void Update()
     {
-        _moveInput.x = Input.GetAxisRaw("Horizontal"); 
-        _moveInput.y = Input.GetAxisRaw("Vertical");   
-
+        _moveInput.x = Input.GetAxis("Horizontal"); 
+        _moveInput.y = Input.GetAxis("Vertical");   
         _moveInput.Normalize(); 
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        _rb.MovePosition(_rb.position + _moveInput * moveSpeed * Time.fixedDeltaTime);
+        _rb.MovePosition(_rb.position + _moveInput * (moveSpeed * Time.fixedDeltaTime));
     }
 }

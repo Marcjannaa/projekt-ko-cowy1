@@ -21,4 +21,9 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
+
+    public static void StartFight()
+    {
+        SceneManager.LoadScene("Battle");
+    }
 }

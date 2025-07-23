@@ -7,11 +7,13 @@ public class MiniGameEnemy : MonoBehaviour
     
     public float speed = 5f;
     private Vector2 _moveDirection;
-
+    private Vector2 _startPos;
+    
     private void Start()
     {
         var player = GameObject.FindGameObjectWithTag("Player");
-
+        _startPos = gameObject.transform.position;
+        
         if (player != null)
         {
             Vector2 targetPosition = player.transform.position;
@@ -21,7 +23,6 @@ public class MiniGameEnemy : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("RocketEnemy: Gracz nie znaleziony! Upewnij się, że gracz ma tag 'Player'.");
             _moveDirection = Vector2.right; 
         }
     }
@@ -34,7 +35,6 @@ public class MiniGameEnemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
-        Debug.Log("Rakieta trafiła gracza!");
 
         if (GameManager.Instance != null)
         {
@@ -42,6 +42,8 @@ public class MiniGameEnemy : MonoBehaviour
         }
         Destroy(gameObject);
     }
+    
+    
 }
 
 
